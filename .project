@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>modele</name>
+			<type>2</type>
+			<location>C:/Users/leber/Documents/Projets java/UrbanMarginal/src/src/modele</location>
+		</link>
+		<link>
+			<name>outils</name>
+			<type>2</type>
+			<location>C:/Users/leber/Documents/Projets java/UrbanMarginal/src/src/outils</location>
+		</link>
+	</linkedResources>
 </projectDescription>
