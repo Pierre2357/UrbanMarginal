@@ -16,6 +16,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>controleur</name>
+			<type>2</type>
+			<location>C:/Users/leber/Documents/Projets java/UrbanMarginal/src/src/controleur</location>
+		</link>
+		<link>
 			<name>modele</name>
 			<type>2</type>
 			<location>C:/Users/leber/Documents/Projets java/UrbanMarginal/src/src/modele</location>
@@ -24,6 +29,11 @@
 			<name>outils</name>
 			<type>2</type>
 			<location>C:/Users/leber/Documents/Projets java/UrbanMarginal/src/src/outils</location>
+		</link>
+		<link>
+			<name>vue</name>
+			<type>2</type>
+			<location>C:/Users/leber/Documents/Projets java/UrbanMarginal/src/src/vue</location>
 		</link>
 	</linkedResources>
 </projectDescription>

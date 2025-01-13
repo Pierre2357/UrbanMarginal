@@ -5,7 +5,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="modele"/>
+	<classpathentry kind="src" path="vue"/>
+	<classpathentry kind="src" path="controleur"/>
 	<classpathentry kind="src" path="outils"/>
+	<classpathentry kind="src" path="media"/>
+	<classpathentry kind="src" path="modele"/>
+	<classpathentry kind="lib" path="com.jgoodies.common_1.8.1.v20240327-0800.jar"/>
+	<classpathentry kind="lib" path="com.jgoodies.forms_1.9.0.v20240327-0800.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
