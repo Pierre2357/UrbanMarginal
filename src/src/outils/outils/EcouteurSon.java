@@ -1,6 +1,6 @@
 package outils;
 
-import outils.son.Sound;
+import outils.Sound;
 
 /**
  * Indique que l'objet �coute les �v�nements sons <br>

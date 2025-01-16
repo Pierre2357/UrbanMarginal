@@ -3,6 +3,7 @@ package vue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import controleur.Controle;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,12 +15,14 @@ public class EntreeJeu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtIP;
+	private Controle controle;
 
 	/**
 	 * Create the frame.
 	 */
-	public EntreeJeu() {
+	public EntreeJeu(Controle controle) {
+		this.controle = controle;
 		setTitle("Urban Marginal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 167);
@@ -68,35 +71,25 @@ public class EntreeJeu extends JFrame {
 		lblIP.setBounds(10, 65, 57, 14);
 		contentPane.add(lblIP);
 		
-		textField = new JTextField();
-		textField.setText("127.0.0.1");
-		textField.setBounds(65, 62, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtIP = new JTextField();
+		txtIP.setText("127.0.0.1");
+		txtIP.setBounds(65, 62, 86, 20);
+		contentPane.add(txtIP);
+		txtIP.setColumns(10);
 	}
 	
 	/**
 	 * click sur le bouton start
 	 */
-	private Arene frmArene;
 	private void btnStart_click() {
-		//Ouvre crée et rends visible une frame Arene 
-		this.frmArene = new Arene() ;
-		this.frmArene.setVisible(true);
-		//Ferme la frame actuelle
-		this.dispose();
+		this.controle.evenementEntreeJeu("serveur");
 	}
 	
 	/**
 	 * click sur le bouton connect
 	 */
-	private ChoixJoueur frmChoixJoueur;
 	private void btnConnect_click() {
-		//Ouvre crée et rends visible une frame ChoixJoueur
-		this.frmChoixJoueur = new ChoixJoueur() ;
-		this.frmChoixJoueur.setVisible(true);
-		//Ferme la frame actuelle
-		this.dispose();
+		this.controle.evenementEntreeJeu(txtIP.getText());
 	}
 	
 	/**

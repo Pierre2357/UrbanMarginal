@@ -1,4 +1,4 @@
-package modele
+package modele;
 /**
  * Informations communes � tous les objets (joueurs, murs, boules)
  * permet de m�moriser la position de l'objet et de g�rer les  collisions

@@ -13,12 +13,12 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.Serializable;
 
-import outils.son.ecouteurs.EcouteurSon;
-import outils.son.exceptions.SonErreurDiverse;
-import outils.son.exceptions.SonErreurLecture;
-import outils.son.exceptions.SonException;
-import outils.son.exceptions.SonIntrouvableException;
-import outils.son.exceptions.SonTypeException;
+import outils.EcouteurSon;
+import outils.SonErreurDiverse;
+import outils.SonErreurLecture;
+import outils.SonException;
+import outils.SonIntrouvableException;
+import outils.SonTypeException;
 
 /**
  * Repr�sente un son. <br>
