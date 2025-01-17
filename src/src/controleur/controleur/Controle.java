@@ -14,7 +14,7 @@ public class Controle implements AsyncResponse {
 	private Arene frmArene;
 	private ChoixJoueur frmChoixJoueur;
 	private String typeJeu;
-	private static final int port = 6666;
+	private static final int PORT = 6666;
 	
 	/**
 	 * Méthode de démarrage
@@ -44,7 +44,7 @@ public class Controle implements AsyncResponse {
 			this.frmArene = new Arene();
 			this.frmArene.setVisible(true);
 			//Création du serveur
-			new ServeurSocket(this, port);
+			new ServeurSocket(this, PORT);
 			typeJeu = info;
 			//Fermeture de la fenetre EntreeJeu
 			this.frmEntreeJeu.dispose();
@@ -52,7 +52,7 @@ public class Controle implements AsyncResponse {
 		//Sinon (Demande de connexion à un serveur, info correspond ici à l'adresse IP du serveur à rejoindre)
 		else {
 			//Rejoindre le serveur
-			new ClientSocket(this, info, port);
+			new ClientSocket(this, info, PORT);
 			typeJeu = "client";
 		}
 	}
@@ -63,7 +63,7 @@ public class Controle implements AsyncResponse {
 		case "connexion":
 			if(typeJeu == "client") {
 				//Création et affichage de la fenetre Arene
-				this.frmChoixJoueur = new ChoixJoueur();
+				this.frmChoixJoueur = new ChoixJoueur(this);
 				this.frmChoixJoueur.setVisible(true);
 				//Création de la fenetre Arene sans la rendre visible
 				this.frmArene = new Arene();
@@ -72,5 +72,13 @@ public class Controle implements AsyncResponse {
 				this.frmEntreeJeu.dispose();
 			}
 		}
+	}
+	
+	/**
+	 * Méthode pour communiquer avec la fenêtre ChoixJoueur
+	 */
+	public void evenementChoixJoueur(String pseudo, int personnage) {
+		this.frmArene.setVisible(true);
+		this.frmChoixJoueur.dispose();
 	}
 }
