@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import controleur.Interface;
+
 /**
  * Gestion de la connexion entre 2 ordinateurs distants
  * @author emds
@@ -49,7 +51,7 @@ public class Connection extends Thread {
 		// démarrage du thread d'écoute (attente d'un message de l'ordi distant)
 		this.start() ;
 		// envoi de l'instance de connexion vers la classe qui implémente AsyncResponse pour récupérer la réponse
-		this.delegate.reception(this, "connexion", null);
+		this.delegate.reception(this, Interface.connexion, null);
 	}
 	
 	/**
@@ -83,14 +85,14 @@ public class Connection extends Thread {
 				// réception d'un objet sur le canal d'entrée
 				reception = in.readObject();
 				// envoi de l'information reçue vers la classe qui implémente AsyncResponse pour récupérer la réponse
-				delegate.reception(this, "reception", reception);
+				delegate.reception(this, Interface.reception, reception);
 			} catch (ClassNotFoundException e) {
 				// problème grave qui ne devrait pas se produire : arrêt du programme
 				System.out.println("erreur de classe sur réception : "+e);
 				System.exit(0);
 			} catch (IOException e) {
 				// envoi de l'information de déconnexion  vers la classe qui implémente AsyncResponse pour récupérer la réponse
-				delegate.reception(this, "deconnexion", null);
+				delegate.reception(this, Interface.deconnexion, null);
 				// demande d'arrêter de boucler sur l'attente d'une réponse
 				inOk = false ;
 				// l'ordinateur distant n'est plus accessible

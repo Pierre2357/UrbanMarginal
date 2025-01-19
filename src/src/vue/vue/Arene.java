@@ -10,6 +10,8 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import controleur.Interface;
+
 public class Arene extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -33,7 +35,7 @@ public class Arene extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Arene.class.getResource("/fonds/fondarene.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(Arene.class.getResource(Interface.fondArene)));
 		lblNewLabel.setBounds(0, 0, 800, 600);
 		contentPane.add(lblNewLabel);
 		

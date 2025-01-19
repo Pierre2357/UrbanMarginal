@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import controleur.Controle;
+import controleur.Interface;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -82,7 +84,7 @@ public class EntreeJeu extends JFrame {
 	 * click sur le bouton start
 	 */
 	private void btnStart_click() {
-		this.controle.evenementEntreeJeu("serveur");
+		this.controle.evenementEntreeJeu(Interface.serveur);
 	}
 	
 	/**

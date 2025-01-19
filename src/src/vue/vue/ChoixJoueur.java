@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import controleur.Controle;
+import controleur.Interface;
 
 public class ChoixJoueur extends JFrame {
 
@@ -47,7 +48,7 @@ public class ChoixJoueur extends JFrame {
 		contentPane.add(lblPersonnage);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ChoixJoueur.class.getResource("/fonds/fondchoix.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(ChoixJoueur.class.getResource(Interface.fondChoix)));
 		lblNewLabel.setBounds(0, 0, 400, 275);
 		contentPane.add(lblNewLabel);
 		
