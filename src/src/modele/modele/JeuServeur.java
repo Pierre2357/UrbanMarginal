@@ -42,6 +42,7 @@ public class JeuServeur extends Jeu {
 		String[] tabMessage = this.message.split(Interface.tidle);
 		switch (tabMessage [0]) {
 		case Interface.pseudo :
+			this.controle.evenementJeuServeur(Interface.ajoutPanelMur, connection);
 			//Crée un joueur avec les informations données
 			lesJoueurs.get(connection).initPerso(tabMessage[1], Integer.parseInt(tabMessage[2]));
 			break;
@@ -63,6 +64,11 @@ public class JeuServeur extends Jeu {
 	 * Génération des murs
 	 */
 	public void constructionMurs() {
+		for (int i=0 ; i<20 ; i++) {
+			Mur mur = new Mur();
+			this.controle.evenementJeuServeur(Interface.ajoutMur, mur.getJLabel());
+			lesMurs.add(mur);
+		}
 	}
 	
 }

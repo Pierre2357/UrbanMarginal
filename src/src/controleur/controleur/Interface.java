@@ -128,4 +128,6 @@ public class Interface {
 	public static final String reception = "reception";
 	public static final String deconnexion = "deconnexion";
 	public static final String serveur = "serveur";
+	public static final String ajoutMur = "ajout mur";
+	public static final String ajoutPanelMur = "ajout panel mur";
 }

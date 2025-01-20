@@ -7,6 +7,7 @@ import outils.AsyncResponse;
 import outils.Connection;
 import outils.ServeurSocket;
 import outils.ClientSocket;
+import javax.swing.JPanel;
 import modele.Jeu;
 import modele.JeuServeur;
 import modele.JeuClient;
@@ -21,6 +22,7 @@ public class Controle implements AsyncResponse {
 	private static final String Choix = "ChoixJoueur";
 	private static final String Arene = "Arene";
 	private Jeu leJeu;
+	private JeuServeur leJeuServeur;
 	private JeuClient leJeuClient;
 	
 	/**
@@ -51,6 +53,8 @@ public class Controle implements AsyncResponse {
 			//Création du serveur
 			new ServeurSocket(this, PORT);
 			leJeu = new JeuServeur(this);
+			leJeuServeur = (JeuServeur)leJeu;
+			leJeuServeur.constructionMurs();
 			//Fermeture de la fenetre EntreeJeu
 			this.frmEntreeJeu.dispose();
 		}
@@ -60,7 +64,10 @@ public class Controle implements AsyncResponse {
 			new ClientSocket(this, info, PORT);
 		}
 	}
-
+	
+	/**
+	 * Méthode pour gérer la réception d'une information. utilise la méthode de AsyncReponse.
+	 */
 	@Override
 	public void reception(Connection connection, String ordre, Object info) {
 		switch (ordre) {
@@ -99,6 +106,29 @@ public class Controle implements AsyncResponse {
 	
 	public void envoi(Connection connection, Object info) {
 		connection.envoi(info);
+	}
+	
+	/**
+	 * Méthode pour communiquer avec JeuServeur
+	 */
+	public void evenementJeuServeur(String ordre, Object info) {
+		switch (ordre) {
+		case Interface.ajoutMur :
+			this.frmArene.ajoutMurs(info);
+			break;
+		case Interface.ajoutPanelMur :
+			leJeu.envoi((Connection) info, this.frmArene.getJpnMurs());
+			break;
+		}
+	}
+	
+	/**
+	 * Méthode pour communiquer avec JeuClient
+	 */
+	public void evenementJeuClient(String ordre, Object info) {
+		if (ordre == Interface.ajoutPanelMur) {
+			this.frmArene.setJpnMurs((JPanel)info);
+		}
 	}
 	
 	/**
