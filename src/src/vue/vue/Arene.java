@@ -18,6 +18,7 @@ public class Arene extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtSaisie;
 	private JPanel jpnMurs;
+	private JPanel jpnJeu;
 
 	/**
 	 * Create the frame.
@@ -34,6 +35,12 @@ public class Arene extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		jpnJeu = new JPanel();
+		jpnJeu.setBounds(0, 0, 800, 600);
+		jpnJeu.setOpaque(false);
+		jpnJeu.setLayout(null);
+		contentPane.add(jpnJeu);
 		
 		jpnMurs = new JPanel();
 		jpnMurs.setBounds(0, 0, 800, 600);
@@ -72,6 +79,14 @@ public class Arene extends JFrame {
 	}
 	
 	/**
+	 * Méthode pour ajouter les murs
+	 */
+	public void ajoutJlabelJeu(JLabel label) {
+		jpnJeu.add(label);
+		jpnJeu.repaint();
+	}
+	
+	/**
 	 * Getter de jpnMurs
 	 */
 	
@@ -83,6 +98,23 @@ public class Arene extends JFrame {
 	 * Setter de jpnMurs
 	 */
 	public void setJpnMurs(JPanel panel) {
+		jpnMurs.add(panel);
+		jpnMurs.repaint();
+	}
+	
+	/**
+	 * Getter de jpnJeu
+	 */
+	
+	public JPanel getJpnJeu() {
+		return jpnJeu;
+	}
+	
+	/**
+	 * Setter de jpnJeu
+	 */
+	public void setJpnJeu(JPanel panel) {
+		jpnJeu.removeAll();
 		jpnMurs.add(panel);
 		jpnMurs.repaint();
 	}

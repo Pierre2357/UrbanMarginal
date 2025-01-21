@@ -7,6 +7,7 @@ import outils.AsyncResponse;
 import outils.Connection;
 import outils.ServeurSocket;
 import outils.ClientSocket;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import modele.Jeu;
 import modele.JeuServeur;
@@ -119,6 +120,12 @@ public class Controle implements AsyncResponse {
 		case Interface.ajoutPanelMur :
 			leJeu.envoi((Connection) info, this.frmArene.getJpnMurs());
 			break;
+		case Interface.ajoutLabelJeu :
+			this.frmArene.ajoutJlabelJeu((JLabel)info);
+			break;
+		case Interface.envoiPanelJeu :
+			leJeu.envoi((Connection) info, this.frmArene.getJpnJeu());
+			break;
 		}
 	}
 	
@@ -126,8 +133,12 @@ public class Controle implements AsyncResponse {
 	 * Méthode pour communiquer avec JeuClient
 	 */
 	public void evenementJeuClient(String ordre, Object info) {
-		if (ordre == Interface.ajoutPanelMur) {
+		switch (ordre) {
+		case Interface.ajoutPanelMur :
 			this.frmArene.setJpnMurs((JPanel)info);
+			break;
+		case Interface.envoiPanelJeu:
+			this.frmArene.setJpnJeu((JPanel)info);
 		}
 	}
 	

@@ -1,7 +1,10 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
+import java.util.Set;
+import javax.swing.JLabel;
 import controleur.Controle;
 import controleur.Interface;
 import outils.Connection;
@@ -32,7 +35,7 @@ public class JeuServeur extends Jeu {
 	
 	@Override
 	public void connexion(Connection connection) {
-		lesJoueurs.put(connection, new Joueur());
+		lesJoueurs.put(connection, new Joueur(this));
 	}
 
 	@Override
@@ -44,7 +47,8 @@ public class JeuServeur extends Jeu {
 		case Interface.pseudo :
 			this.controle.evenementJeuServeur(Interface.ajoutPanelMur, connection);
 			//Crée un joueur avec les informations données
-			lesJoueurs.get(connection).initPerso(tabMessage[1], Integer.parseInt(tabMessage[2]));
+		    Collection <Joueur> joueurs = lesJoueurs.values();
+			lesJoueurs.get(connection).initPerso(tabMessage[1], Integer.parseInt(tabMessage[2]), joueurs, lesMurs);
 			break;
 		}
 	}
@@ -71,4 +75,20 @@ public class JeuServeur extends Jeu {
 		}
 	}
 	
+	/**
+	 * Ajout des JLabels
+	 */
+	public void ajoutJLabelJeuArene(JLabel label) {
+		this.controle.evenementJeuServeur(Interface.ajoutLabelJeu, label);
+	}
+	
+	/**
+	 * envoi a tous les labels de jpnJeu
+	 */
+	public void envoiJeuATous() {
+		Set <Connection> connections = this.lesJoueurs.keySet();
+		for(Connection laConnection : connections) {
+			this.controle.evenementJeuServeur(Interface.envoiPanelJeu, laConnection);
+		}
+	}
 }

@@ -24,12 +24,31 @@ public abstract class Objet {
 	protected int posY ;
 	
 	/**
+	 * largeure de l'objet
+	 */
+	protected int largeure;
+
+	/**
+	 * hauteure de l'objet
+	 */
+	protected int hauteure;
+	
+	/**
 	 * contr�le si l'objet actuel touche l'objet pass� en param�tre
 	 * @param objet contient l'objet � contr�ler
 	 * @return true si les 2 objets se touchent
 	 */
-	public Boolean toucheObjet (Objet objet) {
-		return null;
+	public boolean toucheObjet(Objet objet) {
+	    if (objet != null) {
+	        // Vérifie si les objets se chevauchent en comparant leurs limites
+	        return !(this.posX + this.largeure < objet.posX ||
+	                 this.posX > objet.posX + objet.largeure ||
+	                 this.posY + this.hauteure < objet.posY ||
+	                 this.posY > objet.posY + objet.hauteure);
+	    }
+	    else {
+	        return false;
+	    }
 	}
 	
 	/**

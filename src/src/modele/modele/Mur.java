@@ -18,9 +18,9 @@ public class Mur extends Objet {
 	private static final int largeureMur = 34;
 	private static final int hauteureMur = 35;
 	private static final int minPosX = largeureMur;
-	private static final int maxPosX = 800 - largeureMur;
+	private static final int maxPosX = 750;
 	private static final int minPosY = hauteureMur;
-	private static final int maxPosY = 600 - hauteureMur;
+	private static final int maxPosY = 550;
 
 	/**
 	 * Constructeur
@@ -28,13 +28,16 @@ public class Mur extends Objet {
 	public Mur() {
 		Random rand = new Random();
 		//Met PosX à une valeure aléatoire comprise entre minPosX et maxPosX
-		super.posX = rand.nextInt(minPosX, maxPosX + 1);
+		super.posX = rand.nextInt(minPosX, maxPosX);
 		//Met PosY à une valeure aléatoire comprise entre minPosY et maxPosY
-		super.posY = rand.nextInt(minPosY, maxPosY + 1);
+		super.posY = rand.nextInt(minPosY, maxPosY);
+		//Valorise les dimentions de l'objet
+		super.largeure = largeureMur;
+		super.hauteure = hauteureMur;
 		//Création et paramétrage du JLabel qui représentera le mur
 		super.jLabel = new JLabel();
 		jLabel.setIcon(new ImageIcon(Arene.class.getResource(Interface.mur)));
-		jLabel.setBounds(super.posX, super.posY, largeureMur, hauteureMur);
+		jLabel.setBounds(super.posX, super.posY, super.largeure, super.hauteure);
 	}
 	
 }
