@@ -28,9 +28,9 @@ public class Mur extends Objet {
 	public Mur() {
 		Random rand = new Random();
 		//Met PosX à une valeure aléatoire comprise entre minPosX et maxPosX
-		super.posX = rand.nextInt(minPosX, maxPosX);
+		super.posX = rand.nextInt((maxPosX - minPosX) + 1) + minPosX;
 		//Met PosY à une valeure aléatoire comprise entre minPosY et maxPosY
-		super.posY = rand.nextInt(minPosY, maxPosY);
+		super.posY = rand.nextInt((maxPosY - minPosY) + 1) + minPosY;
 		//Valorise les dimentions de l'objet
 		super.largeure = largeureMur;
 		super.hauteure = hauteureMur;

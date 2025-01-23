@@ -103,10 +103,12 @@ public class Joueur extends Objet {
 		this.numPerso = numPerso;
 		//Création du JLabel qui représente le perso
 		super.jLabel = new JLabel();
+		//Crée et paramètre le label du message
 		this.message = new JLabel();
 		this.message.setFont(new Font("Dialog", Font.BOLD, 8));
 		message.setText(this.pseudo + " : " + this.vie);
 		System.out.println("joueur "+pseudo+" - num perso "+numPerso+" créé");
+		//Paramétrages et envoi des labels
 		this.affiche(marche, this.etape);
 		this.premierePosition(Joueurs, Murs);
 		this.jeuServeur.ajoutJLabelJeuArene(this.jLabel);
@@ -120,10 +122,10 @@ public class Joueur extends Objet {
 	 */
 	private void premierePosition(Collection<Joueur> Joueurs, ArrayList<Mur> Murs) {
 		Random rand = new Random();
-		super.jLabel.setBounds(rand.nextInt(minPosX, maxPosX), rand.nextInt(minPosY, maxPosY), super.largeure, super.hauteure);
+		super.jLabel.setBounds(rand.nextInt((maxPosX - minPosX) + 1) + minPosX, rand.nextInt((maxPosY - minPosY) + 1) + minPosY, super.largeure, super.hauteure);
 		while(this.toucheJoueur(Joueurs) || this.toucheMur(Murs)) {
-			super.posX = rand.nextInt(minPosX, maxPosX);
-			super.posY = rand.nextInt(minPosY, maxPosY);
+			super.posX = rand.nextInt((maxPosX - minPosX) + 1) + minPosX;
+			super.posY = rand.nextInt((maxPosY - minPosY) + 1) + minPosY;
 			super.jLabel.setBounds(super.posX, super.posY, super.largeure, super.hauteure);
 		}
 	}
@@ -217,4 +219,7 @@ public class Joueur extends Objet {
 	public void departJoueur() {
 	}
 	
+	public String getPseudo() {
+		return this.pseudo;
+	}
 }

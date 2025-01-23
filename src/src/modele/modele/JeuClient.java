@@ -15,7 +15,8 @@ public class JeuClient extends Jeu {
 	private Connection connection;
 	
 	/**
-	 * Controleur
+	 * Constructeur
+	 * @param controle
 	 */
 	public JeuClient(Controle controle) {
 		super.controle = controle;
@@ -28,7 +29,9 @@ public class JeuClient extends Jeu {
 
 	@Override
 	public void reception(Connection connection, Object info) {
+		//vérifie si info est un JPanel
 		if (info instanceof JPanel) {
+			//si mursOk est faux (si les murs n'ont pas encore été plaçés)
 			if(!mursOk) {
 				this.controle.evenementJeuClient(Interface.ajoutPanelMur, info);
 				mursOk = true;
@@ -36,6 +39,9 @@ public class JeuClient extends Jeu {
 			else {
 				this.controle.evenementJeuClient(Interface.envoiPanelJeu, info);
 			}
+		}
+		else if (info instanceof String) {
+			this.controle.evenementJeuClient(Interface.modifTchat, info);
 		}
 	}
 	
@@ -45,6 +51,7 @@ public class JeuClient extends Jeu {
 	/**
 	 * Envoi d'une information vers le serveur
 	 * fais appel une fois à l'envoi dans la classe Jeu
+	 * @param info
 	 */
 	public void envoi(String info) {
 		super.envoi(connection, info);

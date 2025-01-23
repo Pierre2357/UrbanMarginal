@@ -41,7 +41,7 @@ public abstract class Objet {
 	public boolean toucheObjet(Objet objet) {
 	    if (objet != null) {
 	        // Vérifie si les objets se chevauchent en comparant leurs limites
-	        return !(this.posX + this.largeure < objet.posX ||
+	        return  !(this.posX + this.largeure < objet.posX ||
 	                 this.posX > objet.posX + objet.largeure ||
 	                 this.posY + this.hauteure < objet.posY ||
 	                 this.posY > objet.posY + objet.hauteure);

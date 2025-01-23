@@ -132,4 +132,8 @@ public class Interface {
 	public static final String ajoutPanelMur = "ajout panel mur";
 	public static final String ajoutLabelJeu =  "ajout jlabel jeu";
 	public static final String envoiPanelJeu =  "envoi Panel Jeu";
+	public static final String tchat =  "tchat";
+	public static final String modifTchat =  " modifier tchat";
+	public static final String ajoutPhrase = "ajout phrase";
+	public static final String troisAsterisques = "***";
 }

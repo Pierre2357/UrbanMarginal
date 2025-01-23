@@ -25,6 +25,7 @@ public class Controle implements AsyncResponse {
 	private Jeu leJeu;
 	private JeuServeur leJeuServeur;
 	private JeuClient leJeuClient;
+	private boolean client;
 	
 	/**
 	 * Méthode de démarrage
@@ -54,8 +55,8 @@ public class Controle implements AsyncResponse {
 			//Création du serveur
 			new ServeurSocket(this, PORT);
 			leJeu = new JeuServeur(this);
-			leJeuServeur = (JeuServeur)leJeu;
-			leJeuServeur.constructionMurs();
+			this.leJeuServeur = (JeuServeur)leJeu;
+			this.leJeuServeur.constructionMurs();
 			//Fermeture de la fenetre EntreeJeu
 			this.frmEntreeJeu.dispose();
 		}
@@ -97,6 +98,8 @@ public class Controle implements AsyncResponse {
 	
 	/**
 	 * Méthode pour communiquer avec la fenêtre ChoixJoueur
+	 * @param pseudo
+	 * @param numPerso
 	 */
 	public void evenementChoixJoueur(String pseudo, int numPerso) {
 		leJeuClient = (JeuClient) leJeu;
@@ -105,12 +108,19 @@ public class Controle implements AsyncResponse {
 		this.frmChoixJoueur.dispose();
 	}
 	
+	/**
+	 * méthode pour envoyer une information
+	 * @param connection
+	 * @param info
+	 */
 	public void envoi(Connection connection, Object info) {
 		connection.envoi(info);
 	}
 	
 	/**
 	 * Méthode pour communiquer avec JeuServeur
+	 * @param ordre
+	 * @param info
 	 */
 	public void evenementJeuServeur(String ordre, Object info) {
 		switch (ordre) {
@@ -126,11 +136,17 @@ public class Controle implements AsyncResponse {
 		case Interface.envoiPanelJeu :
 			leJeu.envoi((Connection) info, this.frmArene.getJpnJeu());
 			break;
+		case Interface.ajoutPhrase :
+			this.frmArene.ajoutTchat((String) info);
+			this.leJeuServeur.envoi(this.frmArene.getTxtTchat());
+			break;
 		}
 	}
 	
 	/**
 	 * Méthode pour communiquer avec JeuClient
+	 * @param ordre
+	 * @param info
 	 */
 	public void evenementJeuClient(String ordre, Object info) {
 		switch (ordre) {
@@ -139,11 +155,17 @@ public class Controle implements AsyncResponse {
 			break;
 		case Interface.envoiPanelJeu:
 			this.frmArene.setJpnJeu((JPanel)info);
+			break;
+		case Interface.modifTchat :
+			this.frmArene.setTxtTchat((String)info);
+			break;
 		}
 	}
 	
 	/**
 	 * Gère la création d'une frame
+	 * @param type
+	 * @param visible
 	 */
 	public void creerFrame(String type, Boolean visible) {
 		switch(type) {
@@ -156,9 +178,23 @@ public class Controle implements AsyncResponse {
 			this.frmChoixJoueur.setVisible(visible);
 			break;
 		case Arene :
-			this.frmArene = new Arene();
+			if(leJeu instanceof JeuClient) {
+				this.client = true;
+			}
+			else {
+				this.client = false;
+			}
+			this.frmArene = new Arene(this, this.client);
 			this.frmArene.setVisible(visible);
 			break;
 		}
+	}
+	
+	/**
+	 * méthode pour communiquer avec l'Arene
+	 * @param texte
+	 */
+	public void evenementArene(String texte) {
+		this.leJeuClient.envoi(Interface.tchat + Interface.tidle + texte);
 	}
 }

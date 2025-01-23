@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="private" author="true" classpath="com.jgoodies.common_1.8.1.v20240327-0800.jar;com.jgoodies.forms_1.9.0.v20240327-0800.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="controleur,vue,modele" source="21" sourcefiles="src/src/outils/outils/EcouteurSon.java,src/src/outils/outils/AsyncResponse.java,src/src/outils/outils/ClientSocket.java,src/src/outils/outils/Sound.java,src/src/outils/outils/ServeurSocket.java,src/src/outils/outils/Connection.java,src/src/outils/outils/Duree.java" sourcepath="src/src/vue;src/src/controleur;src/src/outils;src/src/modele;media" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

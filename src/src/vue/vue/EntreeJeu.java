@@ -34,48 +34,48 @@ public class EntreeJeu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnStart = new JButton("Start");
+		JButton btnStart = new JButton("Lancer");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnStart_click();
 			}
 		});
-		btnStart.setBounds(185, 11, 89, 23);
+		btnStart.setBounds(162, 11, 112, 23);
 		contentPane.add(btnStart);
 		
-		JButton btnConnect = new JButton("Connect");
+		JButton btnConnect = new JButton("Se connecter");
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnConnect_click();
 			}
 		});
-		btnConnect.setBounds(185, 61, 89, 23);
+		btnConnect.setBounds(162, 61, 112, 23);
 		contentPane.add(btnConnect);
 		
-		JButton btnExit = new JButton("Exit");
+		JButton btnExit = new JButton("Quitter");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnExit_click();
 			}
 		});
-		btnExit.setBounds(185, 95, 89, 23);
+		btnExit.setBounds(162, 95, 112, 23);
 		contentPane.add(btnExit);
 		
-		JLabel lblStart = new JLabel("Start a server:");
-		lblStart.setBounds(10, 15, 89, 14);
+		JLabel lblStart = new JLabel("Lancer un serveur :");
+		lblStart.setBounds(10, 15, 94, 14);
 		contentPane.add(lblStart);
 		
-		JLabel lblConnect = new JLabel("Connect an existing server:");
+		JLabel lblConnect = new JLabel("Se connecter à un serveur :");
 		lblConnect.setBounds(10, 40, 157, 14);
 		contentPane.add(lblConnect);
 		
-		JLabel lblIP = new JLabel("IP server:");
-		lblIP.setBounds(10, 65, 57, 14);
+		JLabel lblIP = new JLabel("IP serveur :");
+		lblIP.setBounds(10, 65, 64, 14);
 		contentPane.add(lblIP);
 		
 		txtIP = new JTextField();
 		txtIP.setText("127.0.0.1");
-		txtIP.setBounds(65, 62, 86, 20);
+		txtIP.setBounds(66, 62, 86, 20);
 		contentPane.add(txtIP);
 		txtIP.setColumns(10);
 	}
